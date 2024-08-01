@@ -1,0 +1,138 @@
+<!Doctype html>
+<html>
+<head> 
+   <meta charset="UTF-8"/>
+   <title>Mudar Senha</title>
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Estilo.css') }}">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+   <script>
+      function verificarSenha() {
+          var senha = document.getElementById('senha').value;
+          var deuErro = document.getElementById('erroS');
+          if (senha.length < 6) {
+              deuErro.textContent = 'Senha deve ter no mínimo 6 letras.';
+          } else {
+              deuErro.textContent = '';          
+          }
+      }
+      function confirmarSenha() {
+          var senha = document.getElementById('senha').value;
+          var confirma = document.getElementById('confirmaSenha').value;
+          var deuErro = document.getElementById('erroC')
+          if (senha != confirma) {
+              deuErro.textContent = 'Senhas não coinscidem.';
+          } else {
+              deuErro.textContent = '';
+          }
+      }
+      function ocultarSenhaA() {
+      var senha = document.getElementById("senhaAntiga");
+      var olho = document.getElementById("olhoA");
+      if (senha.type === "password") {
+        senha.type = "text";
+        olho.classList.remove("fa-eye"); 
+        olho.classList.add("fa-eye-slash"); 
+      } else {
+        senha.type = "password";
+        olho.classList.remove("fa-eye-slash");
+        olho.classList.add("fa-eye");
+      }
+    }
+      function ocultarSenha() {
+      var senha = document.getElementById("senha");
+      var olho = document.getElementById("olho");
+      if (senha.type === "password") {
+        senha.type = "text";
+        olho.classList.remove("fa-eye"); 
+        olho.classList.add("fa-eye-slash"); 
+      } else {
+        senha.type = "password";
+        olho.classList.remove("fa-eye-slash");
+        olho.classList.add("fa-eye");
+      }
+    }
+      function ocultarSenhaC() {
+      var senha = document.getElementById("confirmaSenha");
+      var olho = document.getElementById("olhoC");
+      if (senha.type === "password") {
+          senha.type = "text";
+          olho.classList.remove("fa-eye"); 
+          olho.classList.add("fa-eye-slash"); 
+      } else {
+          senha.type = "password";
+          olho.classList.remove("fa-eye-slash");
+          olho.classList.add("fa-eye");
+      }
+      }
+  </script>
+</head>
+<body>
+    <nav>
+        <a href="/inicio">Início</a>
+        <a href="/inicio/conta">Conta</a>
+        <a href="/inicio/turmas">Turmas</a>
+        <form action="/sair" method="get">
+            <button type="submit" id="botaosair">Sair</button>
+        </form>
+    </nav>
+    <br>
+    <br>
+   <div class='container'>
+   <div class='cardo'>
+      <h1> Mudar Senha </h1>
+      {% if erro %}
+           <div id="msgError">{{ erro }}</div>
+      {% endif %}
+      {% if mensagem %}
+            <div id="msgSucesso">{{ mensagem }}</div>
+      {% endif %}
+      <form action="/inicio/conta/mudarSenha" method="POST">
+         <div class="label-float">
+            <input type="text" id="usuario" placeholder=" " name="usuario" required>
+            <label for="usuario">Usuário (CPF)</label>
+         </div>
+         <div class='label-float'>
+            <input type='password' id='senhaAntiga' paceholder='' name="senhaAntiga" required>
+            <label for='senhaAntiga'>Senha Antiga</label>
+            <span class="olhinho">
+              <i id="olhoA" class="fas fa-eye" onclick="ocultarSenhaA()"></i>
+            </span>
+          </div>
+         <div class="erro" id="erroS"></div>
+         <div class="label-float">
+            <input type="password" id="senha" placeholder=" " name="senhaNova" required onkeyup="verificarSenha()" onchange="verificarSenha()">
+            <label for="senha">Nova Senha</label>
+            <span class="olhinho">
+                <i id="olho" class="fas fa-eye" onclick="ocultarSenha()"></i>
+            </span>
+         </div>
+         <div class="erro" id="erroC"></div>
+         <div class="label-float">
+            <input type="password" id="confirmaSenha" placeholder=" " name="confirmaSenha" required onkeyup="confirmarSenha()" onchange="confirmarSenha()">
+            <label for="confirmSenha">Confirmar Nova Senha</label>
+            <span class="olhinho">
+                <i id="olhoC" class="fas fa-eye" onclick="ocultarSenhaC()"></i>
+            </span>
+         </div>
+            <button type="submit">Mudar senha</button>
+      </form>
+        <hr>
+      <p>
+        <a href="/inicio/conta"> Voltar </a>
+      </p>
+   </div>
+   </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+</body>
+<footer>
+  <br>
+  <br>
+  <h3>Sistema Academia</h3>
+  <br>
+  <br>
+</footer>
+</html>

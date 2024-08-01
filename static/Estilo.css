@@ -1,0 +1,248 @@
+body {
+  background-image: url('/static/imagens/imagemFundo.jpg');
+  background-blend-mode: multiply;
+  background-color: white;
+  color:#08084d;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover; 
+  margin-top: 3%;
+  margin-left: 15%; 
+  margin-right: 15%; 
+  margin-bottom: 1%; 
+  position:relative;
+}
+
+body canvas{
+  margin-left: 30%; 
+  margin-right: 30%; 
+}
+
+form {
+  text-align: center;
+}
+  
+footer {
+  border-radius: 4px;
+  text-align: center;
+  background-color: #11117f;
+  color: orangered;
+}
+  
+footer h3 {
+  text-align: center;
+}
+
+a{
+  background-color:transparent;
+  color:#272262;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all .3s ease-out;
+}
+
+a:hover{
+  color: orangered;
+}
+
+nav {
+  display:flex;
+  justify-content:space-between;
+  align-items: center;
+  background-color:  #11117f;
+  text-align: center;
+  padding: 3px;
+  border-radius: 4px;
+}
+
+nav a {
+  margin-left: 15px;
+  margin-right: 15px;
+  background-color:  #11117f;
+  color:orangered;
+}
+
+nav a:hover{
+  color:white
+}
+
+button{
+  background-color: white;
+  border-color:  #11117f;
+  color:#08084d;
+  padding: 7px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  transition: all .4s ease-out;
+}
+
+button:hover{
+  background-color:  #11117f;
+  color:white;
+}
+
+hr{
+  margin-top: 10%;
+  margin-bottom: 10%;
+  width: 60%;
+}
+
+.caixa{
+  border-radius: 4px;
+  background-color: white;
+  opacity: 80%;
+  padding-left: 1%;
+  padding-right: 1%;
+  justify-content: center; 
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.cardo {
+  background-color: white;
+  padding: 30px;
+  border-radius: 4%;
+  width: 300px;
+  box-shadow: 0px 0px 3px 1px #08084d;
+}
+
+.cardo h1{
+  text-align: center;
+}
+
+.cardo p{
+  text-align: center;
+}
+
+.label-float{
+  position: relative;
+  padding-top: 13px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.label-float input{
+  width: 100%;
+  padding: 5px 5px;
+  display: inline-block;
+  border: 0;
+  border-bottom: 2px solid  #11117f;
+  background-color: transparent;
+  outline: none;
+  min-width: 180px;
+  transition: all .3s ease-out;
+  border-radius: 0;
+}
+
+.label-float select{
+  width: 100%;
+  padding: 5px 5px;
+  display: inline-block;
+  border: 0;
+  border-bottom: 2px solid  #11117f;
+  background-color: transparent;
+  outline: none;
+  min-width: 180px;
+  transition: all .3s ease-out;
+  border-radius: 0;
+}
+
+.label-float input:focus{
+  border-bottom: 2px solid #11117f;
+}
+
+.label-float label{
+  color: #08084d;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 13px;
+  transition: all .3s ease-out;
+}
+
+.label-float input:focus + label,
+.label-float input:valid + label{
+  margin-top: 0;
+  color: #08084d
+}
+
+.erro{
+  color:red;
+  text-align: justify;
+}
+
+.olhinho{
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  cursor: pointer;
+  color: #272262;
+}
+
+#botaosair{
+  padding: 5px;
+  border-radius: 4px;
+  background-color: orangered;
+  border-color:  #11117f;
+  color: #08084d;
+}
+
+#botaosair:hover{
+  background-color: #11117f;
+  color:white;
+}
+
+#msgError{
+  text-align: center;
+  color:red;
+  background-color: #ffbbbb;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+#msgSucesso{
+  text-align: center;
+  color: #00bb00;
+  background-color: #bbffbe;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+#senha::-webkit-contacts-auto-fill-button,
+#senha::-webkit-credentials-auto-fill-button,
+#senha::-webkit-outer-spin-button,
+#senha::-webkit-inner-spin-button {
+    display: none;
+}
+
+#senha[type="password"]::-ms-reveal,
+#senha[type="password"]::-ms-clear {
+    display: none;
+}
+
+#senha[type="password"]::-ms-eye {
+    visibility: hidden;
+    pointer-events: none;
+}
+#confirmaSenha::-webkit-contacts-auto-fill-button,
+#confirmaSenha::-webkit-credentials-auto-fill-button,
+#confirmaSenha::-webkit-outer-spin-button,
+#confirmaSenha::-webkit-inner-spin-button {
+    display: none;
+}
+
+#confirmaSenha[type="password"]::-ms-reveal,
+#confirmaSenha[type="password"]::-ms-clear {
+    display: none;
+}
+
+#confirmaSenha[type="password"]::-ms-eye {
+    visibility: hidden;
+    pointer-events: none;
+}

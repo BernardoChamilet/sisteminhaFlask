@@ -1,0 +1,86 @@
+<!Doctype html>
+<html>
+<head> 
+   <meta charset="UTF-8"/>
+   <title>Cadastro</title>
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Estilo.css') }}">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+   <script>
+    function ocultarSenha() {
+        var senha = document.getElementById("senha");
+        var olho = document.getElementById("olho");
+        if (senha.type === "password") {
+        senha.type = "text";
+        olho.classList.remove("fa-eye"); 
+        olho.classList.add("fa-eye-slash"); 
+        } else {
+        senha.type = "password";
+        olho.classList.remove("fa-eye-slash");
+        olho.classList.add("fa-eye");
+        }
+    }
+        function ocultarSenhaC() {
+        var senha = document.getElementById("confirmaSenha");
+        var olho = document.getElementById("olhoC");
+        if (senha.type === "password") {
+            senha.type = "text";
+            olho.classList.remove("fa-eye"); 
+            olho.classList.add("fa-eye-slash"); 
+        } else {
+            senha.type = "password";
+            olho.classList.remove("fa-eye-slash");
+            olho.classList.add("fa-eye");
+        }
+        }
+        function redirecionarParaLogin() {
+            setTimeout(function() {
+                window.location.href = '/login'; 
+            }, 1500); 
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            redirecionarParaLogin();
+        });
+    </script>
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+   <div class='container'>
+   <div class='cardo'>
+      <h1> Cadastrar </h1>
+      <div id="msgSucesso">Conta criada com sucesso!</div>
+      <form action="/cadastro" method="POST">
+         <div class="label-float">
+            <input type="text" value="{{ session.get('nomeC', '') }}">
+            <label for="nome">Nome</label>
+         </div>
+         <div class="label-float">
+            <input type="text" value="{{ session.get('usuario', '') }}">
+            <label for="usuario">Usuário</label>
+         </div>
+         <div class="label-float">
+            <input type="password" id="senha" placeholder=" " value="{{ session.get('senha', '') }}">
+            <label for="senha">Senha</label>
+            <span class="olhinho">
+                <i id="olho" class="fas fa-eye" onclick="ocultarSenha()"></i>
+            </span>
+         </div>
+         <div class="label-float">
+            <input type="password" id="confirmaSenha" placeholder=" " value="{{ session.get('confirma', '') }}">
+            <label for="confirmSenha">Confirmar Senha</label>
+            <span class="olhinho">
+                <i id="olhoC" class="fas fa-eye" onclick="ocultarSenhaC()"></i>
+            </span>
+         </div>
+            <button type="submit">Cadastrar</button>
+      </form>
+        <hr>
+      <p> Já tem uma conta?<br>
+        <a href="login"> Entrar </a>
+      </p>
+   </div>
+   </div>
+</body>
+</html>

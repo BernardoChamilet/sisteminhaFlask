@@ -1,0 +1,80 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Criação de Turmas</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Estilo.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+<body>
+   <nav>
+      <a href="/adm">Início</a> 
+      <a href="/adm/alunos">Alunos</a> 
+      <a href="/adm/modalidades">Modalidades</a> 
+      <a href="/adm/salas">Salas</a>
+      <a href="/adm/turmas">Turmas</a>
+      <a href="/adm/graficos">Gráficos</a>
+      <form action="/sair" method="get">
+          <button type="submit" id="botaosair">Sair</button>
+      </form>
+  </nav>
+  <div class="caixa">
+    <br>
+    <br>
+    <br>
+    <div class='container'>
+        <div class='cardo'>
+           <h1> Criar turma </h1>
+           {% if erro %}
+                <div id="msgError">{{ erro }}</div>
+           {% endif %}
+           {% if mensagem %}
+                <div id="msgSucesso">{{ mensagem }}</div>
+           {% endif %}
+           <form action="/adm/turmas/registrar" method="POST">
+            <div class="label-float">
+                <label for="modalidade">Modalidade</label>
+                <br>
+                <select name="modalidade" required>
+                    {% for modalidade in modalidades %}
+                    <option value="{{ modalidade[0] }}">{{ modalidade[0] }}</option>
+                    {% endfor %}
+               </select>
+             </div>
+             <div class="label-float">
+                <input type="time" placeholder=" " name="horaInicial" min="00:00" max="23:59" required>
+                <label for="hora"> Horário Inicial</label>
+             </div>
+             <div class="label-float">
+              <input type="time" placeholder=" " name="horaFinal" min="00:00" max="23:59" required>
+              <label for="horaF"> Horário Final</label>
+           </div>
+             <div class="label-float">
+                <label for="sala">Sala</label>
+                <br>
+                <select name="sala" required>
+                    {% for sala in salas %}
+                    <option value="{{ sala[0] }}">{{ sala[0] }}</option>
+                    {% endfor %}
+               </select>
+             </div>
+                 <button type="submit">Criar</button>
+           </form>
+             <hr>
+           <p> 
+             <a href="/adm/turmas"> Voltar </a>
+           </p>
+        </div>
+        </div>
+<br>
+<br>
+</div>
+</body>
+<footer>
+   <br>
+   <br>
+   <h3>Sistema Academia</h3>
+   <br>
+   <br>
+</footer>
+</html>

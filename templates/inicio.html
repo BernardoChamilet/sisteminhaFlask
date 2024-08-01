@@ -1,0 +1,56 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Início</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Estilo.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/inicio">Início</a>
+        <a href="/inicio/conta">Conta</a>
+        <a href="/inicio/turmas">Turmas</a>
+        <form action="/sair" method="get">
+            <button type="submit" id="botaosair">Sair</button>
+        </form>
+    </nav>
+    <div class="caixa">
+    <br>
+    <br>
+    <h2>Olá {{ nome }}</h2>
+    <br>
+    <br>
+    <a href="inicio/conta">Gerenciar informações da conta</a>
+    <br>
+    <br>
+    <a href="/inicio/turmas">Gerenciar suas turmas e ver horários</a>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    </div>
+</body>
+<footer>
+    <br>
+    <br>
+    <h3>Sistema Academia</h3>
+    <br>
+    <br>
+</footer>
+</html>

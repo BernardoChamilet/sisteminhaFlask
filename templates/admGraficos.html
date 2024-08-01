@@ -1,0 +1,120 @@
+<!Doctype html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Gráficos</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Estilo.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/adm">Início</a>
+        <a href="/adm/alunos">Alunos</a>
+        <a href="/adm/modalidades">Modalidades</a>
+        <a href="/adm/salas">Salas</a>
+        <a href="/adm/turmas">Turmas</a>
+        <a href="/adm/graficos">Gráficos</a>
+        <form action="/sair" method="get">
+            <button type="submit" id="botaosair">Sair</button>
+        </form>
+    </nav>
+<div class="caixa">
+    <br>
+    <br>
+    <h2 align="center">Sexo dos alunos</h2>
+    <canvas id="sexoAlunos"></canvas>
+    <script>
+        var ctx = document.getElementById('sexoAlunos').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: {{ sexoNomes | tojson | safe }},
+                datasets: [{
+                    data: {{ sexoDados | tojson | safe }},
+                    backgroundColor: [
+                        'blue',
+                        'pink'
+                    ],
+                }]
+            },
+        });
+    </script>
+    <br>
+    <br>
+    <h2 align="center">Idade dos alunos</h2>
+    <canvas id="idadesAlunos"></canvas>
+    <script>
+        var ctxIdade = document.getElementById('idadesAlunos').getContext('2d');
+        var myChartIdade = new Chart(ctxIdade, {
+            type: 'pie',
+            data: {
+                labels: {{ idadeNomes | tojson | safe }},
+                datasets: [{
+                    data: {{ idadeDados | tojson | safe }},
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.7)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(153, 102, 255, 0.7)',
+                        'rgba(255, 159, 64, 0.7)'
+                    ],
+                }]
+            },
+        });
+    </script>
+    <br>
+    <br>
+    <h2 align="center">Alunos por modalidades</h2>
+    <canvas id="modalidadeAlunos"></canvas>
+    <script>
+        var ctxM = document.getElementById('modalidadeAlunos').getContext('2d');
+        var myChartM = new Chart(ctxM, {
+            type: 'pie',
+            data: {
+                labels: {{ modalidadeNomes | tojson | safe }},
+                datasets: [{
+                    data: {{ modalidadeDados | tojson | safe }},
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.7)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(153, 102, 255, 0.7)',
+                        'rgba(255, 159, 64, 0.7)'
+                    ],
+                }]
+            },
+        });
+    </script>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p align ="center">
+        <a href="/adm"> Voltar </a>
+    </p>
+    <br>
+    <br>
+</div>
+</body>
+<footer>
+    <br>
+    <br>
+    <h3>Sistema Academia</h3>
+    <br>
+    <br>
+</footer>
+</html>

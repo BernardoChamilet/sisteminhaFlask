@@ -1,0 +1,83 @@
+<!Doctype html>
+<html>
+<head> 
+  <meta charset="UTF-8"/>
+  <title>Mudar Apelido</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Estilo.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <script>
+    function ocultarSenha() {
+      var senha = document.getElementById("senha");
+      var olho = document.getElementById("olho");
+      if (senha.type === "password") {
+        senha.type = "text";
+        olho.classList.remove("fa-eye"); 
+        olho.classList.add("fa-eye-slash"); 
+      } else {
+        senha.type = "password";
+        olho.classList.remove("fa-eye-slash");
+        olho.classList.add("fa-eye");
+      }
+    }
+  </script>
+</head>
+<body>
+    <nav>
+        <a href="/inicio">Início</a>
+        <a href="/inicio/conta">Conta</a>
+        <a href="/inicio/turmas">Turmas</a>
+        <form action="/sair" method="get">
+            <button type="submit" id="botaosair">Sair</button>
+        </form>
+    </nav>
+    <br>
+    <br>
+  <div class='container'>
+  <div class='cardo'>
+    <h1> Mudar Apelido </h1>
+    {% if erro %}
+      <div id="msgError">{{ erro }}</div>
+    {% endif %}
+    {% if mensagem %}
+        <div id="msgSucesso">{{ mensagem }}</div>
+    {% endif %}
+    <form action="/inicio/conta/mudarApelido" method="POST">
+      <div class='label-float'>
+        <input type='text' id='usuario' paceholder='' name="usuario" required>
+        <label for='usuario'>Usuario/CPF</label>
+      </div>
+      <div class='label-float'>
+        <input type='password' id='senha' paceholder='' name="senha" required>
+        <label for='senha'>Senha</label>
+        <span class="olhinho">
+          <i id="olho" class="fas fa-eye" onclick="ocultarSenha()"></i>
+        </span>
+      </div>
+      <div class='label-float'>
+        <input type='text' paceholder='' name="novoApelido" required>
+        <label for='apelido'>Novo Apelido</label>
+      </div>
+      <div>
+        <button type="submit">Mudar Apelido</button>
+      </div>
+    </form>
+      <hr>
+    <p>
+      <a href="/inicio/conta"> Voltar </a>
+    </p>
+  </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+</body>
+<footer>
+    <br>
+    <br>
+    <h3>Sistema Academia</h3>
+    <br>
+    <br>
+</footer>
+</html>

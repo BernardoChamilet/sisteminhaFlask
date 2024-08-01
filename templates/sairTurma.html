@@ -1,0 +1,57 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Sair da turma</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Estilo.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+<body>
+    <nav>
+        <a href="/inicio">Início</a>
+        <a href="/inicio/conta">Conta</a>
+        <a href="/inicio/turmas">Turmas</a>
+        <form action="/sair" method="get">
+            <button type="submit" id="botaosair">Sair</button>
+        </form>
+    </nav>
+  <div class="caixa">
+  <br>
+  <br>
+  <br>
+    <div class='container'>
+        <div class='cardo'>
+           <h1> Sair da turma </h1>
+           {% if mensagem %}
+                <div id="msgSucesso">{{ mensagem }}</div>
+           {% endif %}
+           <form action="/inicio/turmas/sair" method="POST">
+             <div class="label-float">
+                <label for="turma">Turma</label>
+                <br>
+                <select name="turma" required>
+                    {% for turma in turmas %}
+                    <option value="{{ turma[0] }}">{{ turma[0] }}</option>
+                    {% endfor %}
+               </select>
+             </div>
+                 <button type="submit">Sair da turma</button>
+            </form>
+             <hr>
+           <p> 
+             <a href="/inicio/turmas"> Voltar </a>
+           </p>
+        </div>
+        </div>
+<br>
+<br>
+</div>
+</body>
+<footer>
+   <br>
+   <br>
+   <h3>Sistema Academia</h3>
+   <br>
+   <br>
+</footer>
+</html>

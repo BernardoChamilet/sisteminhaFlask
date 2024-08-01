@@ -1,0 +1,57 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Salas</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Estilo.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/adm">Início</a> 
+        <a href="/adm/alunos">Alunos</a> 
+        <a href="/adm/modalidades">Modalidades</a> 
+        <a href="/adm/salas">Salas</a>
+        <a href="/adm/turmas">Turmas</a>
+        <a href="/adm/graficos">Gráficos</a>
+        <form action="/sair" method="get">
+            <button type="submit" id="botaosair">Sair</button>
+        </form>
+    </nav>
+    <div class="caixa">
+    <br>
+    <h2 align="center">Salas</h2>
+    <br>
+    <table border = "1" width = "100%">
+        <tr align ="center"> 
+        <td>Sala</td>
+        </tr>
+        {% for sala in salas %}
+        <tr align = "center">
+        <td>{{ sala[0] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <table width="100%">
+        <tr align="center">
+            <td><a href="salas/registrar"> Registrar nova sala </a></td>
+            <td><a href="salas/remover"> Remover sala </a></td>
+        </tr>
+    </table>    
+    <br>
+    <br>
+    <p align="center"> 
+        <a href="/adm"> Voltar </a>
+    </p>
+    <br>
+    <br>
+</div>
+</body>
+<footer>
+    <br>
+    <br>
+    <h3>Sistema Academia</h3>
+    <br>
+    <br>
+</footer>
+</html>

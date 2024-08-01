@@ -1,0 +1,111 @@
+<!Doctype html>
+<html>
+<head> 
+   <meta charset="UTF-8"/>
+   <title>Cadastro</title>
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Estilo.css') }}">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+   <script>
+      function verificarNome() {
+          var nome = document.getElementById('nome').value;
+          var deuErro = document.getElementById('erroN');
+          if (nome.length < 2) {
+              deuErro.textContent = 'Nome deve ter no mínimo 2 letras.';
+          } else {
+              deuErro.textContent = '';
+          }
+      }
+      function verificarSenha() {
+          var senha = document.getElementById('senha').value;
+          var deuErro = document.getElementById('erroS');
+          if (senha.length < 6) {
+              deuErro.textContent = 'Senha deve ter no mínimo 6 letras.';
+          } else {
+              deuErro.textContent = '';          
+          }
+      }
+      function confirmarSenha() {
+          var senha = document.getElementById('senha').value;
+          var confirma = document.getElementById('confirmaSenha').value;
+          var deuErro = document.getElementById('erroC')
+          if (senha != confirma) {
+              deuErro.textContent = 'Senhas não coinscidem.';
+          } else {
+              deuErro.textContent = '';
+          }
+      }
+      function ocultarSenha() {
+      var senha = document.getElementById("senha");
+      var olho = document.getElementById("olho");
+      if (senha.type === "password") {
+        senha.type = "text";
+        olho.classList.remove("fa-eye"); 
+        olho.classList.add("fa-eye-slash"); 
+      } else {
+        senha.type = "password";
+        olho.classList.remove("fa-eye-slash");
+        olho.classList.add("fa-eye");
+      }
+    }
+      function ocultarSenhaC() {
+      var senha = document.getElementById("confirmaSenha");
+      var olho = document.getElementById("olhoC");
+      if (senha.type === "password") {
+          senha.type = "text";
+          olho.classList.remove("fa-eye"); 
+          olho.classList.add("fa-eye-slash"); 
+      } else {
+          senha.type = "password";
+          olho.classList.remove("fa-eye-slash");
+          olho.classList.add("fa-eye");
+      }
+      }
+  </script>
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+   <div class='container'>
+   <div class='cardo'>
+      <h1> Criar conta </h1>
+      {% if erro %}
+           <div id="msgError">{{ erro }}</div>
+      {% endif %}
+      <form action="/cadastro" method="POST">
+         <div class="erro" id="erroN"></div>
+         <div class="label-float">
+            <input type="text" id="nome" placeholder=" " name="apelido" value="{{ session.get('apelidoC', '') }}" required onkeyup="verificarNome()" onchange="verificarNome()">
+            <label for="apelido">Apelido</label>
+         </div>
+         <div class="erro" id="erroU"></div>
+         <div class="label-float">
+            <input type="text" id="usuario" placeholder=" " name="usuario" value="{{ session.get('usuario', '') }}" required>
+            <label for="usuario">Usuário (CPF)</label>
+         </div>
+         <div class="erro" id="erroS"></div>
+         <div class="label-float">
+            <input type="password" id="senha" placeholder=" " name="senha" value="{{ session.get('senha', '') }}" required onkeyup="verificarSenha()" onchange="verificarSenha()">
+            <label for="senha">Senha</label>
+            <span class="olhinho">
+                <i id="olho" class="fas fa-eye" onclick="ocultarSenha()"></i>
+            </span>
+         </div>
+         <div class="erro" id="erroC"></div>
+         <div class="label-float">
+            <input type="password" id="confirmaSenha" placeholder=" " name="confirmaSenha" value="{{ session.get('confirma', '') }}" required onkeyup="confirmarSenha()" onchange="confirmarSenha()">
+            <label for="confirmSenha">Confirmar Senha</label>
+            <span class="olhinho">
+                <i id="olhoC" class="fas fa-eye" onclick="ocultarSenhaC()"></i>
+            </span>
+         </div>
+            <button type="submit">Cadastrar</button>
+      </form>
+        <hr>
+      <p> Já tem uma conta?<br>
+        <a href="login"> Entrar </a>
+      </p>
+   </div>
+   </div>
+</body>
+</html>

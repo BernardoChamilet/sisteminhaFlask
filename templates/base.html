@@ -1,0 +1,30 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block titulo %} baseAdm {% endblock titulo %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Estilo.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/adm">Início</a>
+        <a href="/adm/alunos">Alunos</a>
+        <a href="/adm/modalidades">Modalidades</a>
+        <a href="/adm/salas">Salas</a>
+        <a href="/adm/turmas">Turmas</a>
+        <a href="/adm/graficos">Gráficos</a>
+        <form action="/sair" method="get">
+            <button type="submit" id="botaosair">Sair</button>
+        </form>
+    </nav>
+{% block conteudo %}
+{% endblock conteudo %}
+</body>
+<footer>
+    <br>
+    <br>
+    <h3>Sistema Academia</h3>
+    <br>
+    <br>
+</footer>
+</html>

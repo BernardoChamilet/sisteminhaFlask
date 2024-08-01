@@ -1,0 +1,58 @@
+<!Doctype html>
+<html>
+<head> 
+  <meta charset="UTF-8"/>
+  <title>Login</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Estilo.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <script>
+    function ocultarSenha() {
+      var senha = document.getElementById("senha");
+      var olho = document.getElementById("olho");
+      if (senha.type === "password") {
+        senha.type = "text";
+        olho.classList.remove("fa-eye"); 
+        olho.classList.add("fa-eye-slash"); 
+      } else {
+        senha.type = "password";
+        olho.classList.remove("fa-eye-slash");
+        olho.classList.add("fa-eye");
+      }
+    }
+  </script>
+</head>
+<body>
+  <br>
+  <br>
+  <br>
+  <div class='container'>
+  <div class='cardo'>
+    <h1> Entrar </h1>
+    {% if erro %}
+      <div id="msgError">{{ erro }}</div>
+    {% endif %}
+    <form action="/login" method="POST">
+      <div class='label-float'>
+        <input type='text' id='usuario' paceholder='' name="usuario" required>
+        <label for='usuario'>Usuario</label>
+      </div>
+      <div class='label-float'>
+        <input type='password' id='senha' paceholder='' name="senha" required>
+        <label for='senha'>Senha</label>
+        <span class="olhinho">
+          <i id="olho" class="fas fa-eye" onclick="ocultarSenha()"></i>
+        </span>
+      </div>
+      <div>
+        <button type="submit">Entrar</button>
+      </div>
+    </form>
+      <hr>
+    <p> Já está matriculado e não tem uma conta?
+      <br>
+      <a href="cadastro"> Criar conta </a>
+    </p>
+  </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Turmas</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Estilo.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/inicio">Início</a>
+        <a href="/inicio/conta">Conta</a>
+        <a href="/inicio/turmas">Turmas</a>
+        <form action="/sair" method="get">
+            <button type="submit" id="botaosair">Sair</button>
+        </form>
+    </nav>
+    <div class="caixa">
+    <br>
+    <h2 align="center">Suas Turmas</h2>
+    <br>
+    <table border = "1" width = "100%">
+        <tr align ="center"> 
+        <td>id</td>
+        <td>Modalidade</td>
+        <td>Horário Inicial</td>
+        <td>Horário Final</td>
+        <td>Sala</td>
+        </tr>
+        {% for turma in turmas %}
+        <tr align = "center">
+        <td>{{ turma[0] }}</td>
+        <td>{{ turma[1] }}</td>
+        <td>{{ turma[2] }}</td>
+        <td>{{ turma[3] }}</td>
+        <td>{{ turma[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <table width="100%">
+        <tr align="center">
+            <td><a href="turmas/entrar"> Entrar em nova turma </a></td>
+            <td><a href="turmas/sair"> Sair de turma </a></td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <p align="center"> 
+        <a href="/inicio"> Voltar </a>
+    </p>
+    <br>
+    <br>
+</div>
+</body>
+<footer>
+    <br>
+    <br>
+    <h3>Sistema Academia</h3>
+    <br>
+    <br>
+</footer>
+</html>

@@ -1,0 +1,60 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Remover sala</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Estilo.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+<body>
+   <nav>
+      <a href="/adm">Início</a> 
+      <a href="/adm/alunos">Alunos</a> 
+      <a href="/adm/modalidades">Modalidades</a> 
+      <a href="/adm/salas">Salas</a>
+      <a href="/adm/turmas">Turmas</a>
+      <a href="/adm/graficos">Gráficos</a>
+      <form action="/sair" method="get">
+          <button type="submit" id="botaosair">Sair</button>
+      </form>
+  </nav>
+  <div class="caixa">
+  <br>
+  <br>
+  <br>
+    <div class='container'>
+        <div class='cardo'>
+           <h1> Remover turma </h1>
+           {% if mensagem %}
+                <div id="msgSucesso">{{ mensagem }}</div>
+           {% endif %}
+           <form action="/adm/salas/remover" method="POST">
+             <div class="label-float">
+                <label for="sala">Sala</label>
+                <br>
+                <select name="sala" required>
+                    {% for sala in salas %}
+                    <option value="{{ sala[0] }}">{{ sala[0] }}</option>
+                    {% endfor %}
+               </select>
+             </div>
+                 <button type="submit">Remover Sala</button>
+           </form>
+             <hr>
+           <p> 
+             <a href="/adm/salas"> Voltar </a>
+           </p>
+        </div>
+        </div>
+<br>
+<br>
+</div>
+</body>
+<footer>
+   <br>
+   <br>
+   <h3>Sistema Academia</h3>
+   <br>
+   <br>
+</footer>
+</html>

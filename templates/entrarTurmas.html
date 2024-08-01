@@ -1,0 +1,75 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Entrar Turmas</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Estilo.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/inicio">Início</a>
+        <a href="/inicio/conta">Conta</a>
+        <a href="/inicio/turmas">Turmas</a>
+        <form action="/sair" method="get">
+            <button type="submit" id="botaosair">Sair</button>
+        </form>
+    </nav>
+    <div class="caixa">
+    <br>
+    <h2 align="center">Turmas</h2>
+    <br>
+    <table border = "1" width = "100%">
+        <tr align ="center"> 
+        <td>id</td>
+        <td>Modalidade</td>
+        <td>Horário Inicial</td>
+        <td>Horário Final</td>
+        <td>Sala</td>
+        </tr>
+        {% for turma in turmas %}
+        <tr align = "center">
+        <td>{{ turma[0] }}</td>
+        <td>{{ turma[1] }}</td>
+        <td>{{ turma[2] }}</td>
+        <td>{{ turma[3] }}</td>
+        <td>{{ turma[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <h2>Escolha uma turma para entrar </h2>
+    {% if erro %}
+        <div id="msgError">{{ erro }}</div>
+    {% endif %}
+    {% if mensagem %}
+        <div id="msgSucesso">{{ mensagem }}</div>
+    {% endif %}
+    <form action="/inicio/turmas/entrar" method="POST">
+        <div class="label-float">
+        <label for="turma">Turma</label>
+        <br>
+        <select name="turma" required>
+            {% for turmaID in turmasID %}
+            <option value="{{ turmaID[0] }}">{{ turmaID[0] }}</option>
+            {% endfor %}
+        </select>
+        </div>
+            <button type="submit">Entrar na turma</button>
+    </form>
+    <br>
+    <br>
+    <p> 
+        <a href="/inicio/turmas"> Voltar </a>
+    </p>
+    <br>
+    <br>
+</div>
+</body>
+<footer>
+    <br>
+    <br>
+    <h3>Sistema Academia</h3>
+    <br>
+    <br>
+</footer>
+</html>

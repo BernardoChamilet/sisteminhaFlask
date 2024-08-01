@@ -1,0 +1,67 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Turmas</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Estilo.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/adm">Início</a> 
+        <a href="/adm/alunos">Alunos</a> 
+        <a href="/adm/modalidades">Modalidades</a> 
+        <a href="/adm/salas">Salas</a>
+        <a href="/adm/turmas">Turmas</a>
+        <a href="/adm/graficos">Gráficos</a>
+        <form action="/sair" method="get">
+            <button type="submit" id="botaosair">Sair</button>
+        </form>
+    </nav>
+    <div class="caixa">
+    <br>
+    <h2 align="center">Turmas</h2>
+    <br>
+    <table border = "1" width = "100%">
+        <tr align ="center"> 
+        <td>id</td>
+        <td>Modalidade</td>
+        <td>Horário Inicial</td>
+        <td>Horário Final</td>
+        <td>Sala</td>
+        <td>Edição</td>
+        </tr>
+        {% for turma in turmas %}
+        <tr align = "center">
+        <td>{{ turma[0] }}</td>
+        <td>{{ turma[1] }}</td>
+        <td>{{ turma[2] }}</td>
+        <td>{{ turma[3] }}</td>
+        <td>{{ turma[4] }}</td>
+        <td>Editar. dica:link para turmas/editar/turma[0] e no app.py criar rota editar/"<"int:id">" que usará o id turma[0] passado por parâmetro na url para saber qual a turma que deverá acessar no banco para editar</int:id></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <table width="100%">
+        <tr align="center">
+            <td><a href="turmas/registrar"> Criar nova turma </a></td>
+            <td><a href="turmas/remover"> Remover turma </a></td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <p align="center"> 
+        <a href="/adm"> Voltar </a>
+    </p>
+    <br>
+    <br>
+</div>
+</body>
+<footer>
+    <br>
+    <br>
+    <h3>Sistema Academia</h3>
+    <br>
+    <br>
+</footer>
+</html>
